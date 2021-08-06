@@ -2,10 +2,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { loginUser } from '../utils/API';
 import Auth from '../utils/auth';
-
-//Importing the apollo react hoo and the mutation to login
+//Importing the apollo react hooks and the mutation to login
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
@@ -39,7 +37,7 @@ const LoginForm = () => {
       });
 
       //Passing the data of the new user to the auth JWS
-      Auth.login(data.addUser.token)
+      Auth.login(data.login.token)
 
     } catch (err) {
       console.error(err);

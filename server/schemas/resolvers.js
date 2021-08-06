@@ -1,5 +1,5 @@
-const { User, Book } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
+const { User, Book } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -35,15 +35,16 @@ const resolvers = {
             return {token, user};    
         },
         //MUTATION that will be used to save the book
-        saveBook: async (parent, args, context) => {
-            if (context.user) {          
-             const updatedUser =  await User.findByIdAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: { savedBooks: args.input } },
-                { new: true }
-              );          
-            return updatedUser;
-            }          
+        saveBook: async (parent, { bookData }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                  { _id: context.user._id },
+                  { $push: { savedBooks: bookData } },
+                  { new: true }
+                );
+        
+                return updatedUser;
+              }     
             throw new AuthenticationError('User not logged. Please loggin first!');
         },
         //MUTATION that will be used to remove a Book

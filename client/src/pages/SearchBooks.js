@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
-import { SAVE_BOOK } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
+import { SAVE_BOOK } from '../utils/mutations';
 
 const SearchBooks = () => {
   //usign the mutation
-  const [saveBook, {error}] = useMutation(SAVE_BOOK );
+  const [saveBook, {error}] = useMutation(SAVE_BOOK, { errorPolicy: 'all' } );
 
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -70,12 +70,17 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await saveBook(bookToSave, token);
-
-      if (!response.ok) {
+      const { data } = await saveBook(
+        {
+          variables: 
+          { 
+            bookData: 
+            { ...bookToSave } 
+          }
+        });
+      if (!data.ok) {
         throw new Error('something went wrong!');
       }
-
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
