@@ -9,14 +9,15 @@ import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useState({});
-
-  // use this to determine if `useEffect()` hook needs to run again  
+  //Using the query GET_ME that we created on the queries
   const { loading, data} = useQuery(GET_ME);
+  //Using the mutation REMOVE_BOOK that we created on the mutation
   const [removeBook, {error}] = useMutation(REMOVE_BOOK);
 
+  const [userData, setUserData] = useState({});
+
   const userData = data?.me || [];
-  
+
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
