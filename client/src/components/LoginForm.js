@@ -38,7 +38,9 @@ const LoginForm = () => {
         variables: { ...userFormData}
       });
 
-      Auth.login(token);
+      //Passing the data of the new user to the auth JWS
+      Auth.login(data.addUser.token)
+      
     } catch (err) {
       console.error(err);
       setShowAlert(true);
