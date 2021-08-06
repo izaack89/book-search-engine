@@ -31,13 +31,14 @@ npm run local:dev
 
 ## [Book Search Engine GitHub Code](https://github.com/izaack89/book-search-engine)
 
-## [Book Search Engine Live](https://enigmatic-river-53080.herokuapp.com/ )
+## [Book Search Engine Live](https://peaceful-tundra-40160.herokuapp.com/)
 
 ## Book Search Engine References
-
-- [IndexDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) - IndexDB Information
-- [Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) - Manifest Information
-- [Service Worker PWA](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker) - Worker PWA Information
+- [Deploy Heroku and Mongo](https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas)- Heroku and Mongo Deploy
+- [StackOverFlow](https://stackoverflow.com/questions/18660474/push-rejected-failed-to-compile-node-js-app-heroku) - Heroku Issues NodeJS
+- [Heroku Issues](https://help.heroku.com/6235QYN4/why-is-my-node-js-build-failing-because-of-no-matching-node-versions) - Heroku Topic
+- [GraphQL](https://graphql.org/graphql-js/) - GraphQl Information
+- [GraphQl Input](https://graphql.org/graphql-js/mutations-and-input-types/) - GraphQl Input
 
 ## Questions
 
