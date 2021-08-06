@@ -6,7 +6,7 @@ import { loginUser } from '../utils/API';
 import Auth from '../utils/auth';
 
 //Importing the apollo react hoo and the mutation to login
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 const LoginForm = () => {
@@ -40,7 +40,7 @@ const LoginForm = () => {
 
       //Passing the data of the new user to the auth JWS
       Auth.login(data.addUser.token)
-      
+
     } catch (err) {
       console.error(err);
       setShowAlert(true);
